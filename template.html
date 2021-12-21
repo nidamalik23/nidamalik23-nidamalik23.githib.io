@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<!-- Prototype responsive display of historical disk usage. Author: Nida F, Malik.  Copyright:  Emerson Electric Co. 12/20/2021
+See: https://www.chartjs.org/docs/latest/charts/bar.html
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>Disk Storage Utilization History</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <style>
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-colour: antiquewhite;
+  margin-bottom: 4vh;
+  margin-left: 4vw;
+  margin-right: 4vw;
+  margin-top: 4vh;
+  fill: black;
+}
+.center {
+  text-align: center;
+}
+.bold {
+  font-weight: bold;
+}
+
+th {
+  padding: 1vw;
+  font-size: 1vw;
+}
+td {
+  padding: 1vw;
+  font-size: 1vw;
+}
+.td1  {background-color: lavender}
+.td11 {background-color: lavenderblush}
+.td2  {background-color: orange}
+.td21 {background-color: lightskyblue}
+.td3  {background-color: lavenderblush}
+.td4  {background-color: lightskyblue}
+.td5  {background-color: blanchedalmond}
+.td7  {background-color: blanchedalmond}
+.td8  {background-color: lavenderblush}
+.td9  {background-color: orange}
+.tda  {background-color: lightskyblue}
+.tdb  {background-color: darkkhaki}
+.tdc  {background-color: lavenderblush}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<script>
+ const labels = [ '01/2021', '02/2021', '03/2021', '04/2021', '05/2021', '06/2021', '07/2021', '08/2021', '09/2021', '10/2021', '11/2021', '12/2021'];
+ const data   = [       540,       460,       310,       420,       150,       250,       350,       400,       490,       540,       610,       780];
+
+const chart = {
+  labels: labels,
+  datasets: [{
+    label: 'Disk usage during 2021',
+    backgroundColor: 'orange',
+    borderColor: 'black',
+    data: data
+  }]
+};
+
+</script>
+
+<!-- Wide format for landscape screens -->
+
+<div id=wideTable>
+  <table border=0>
+    <!-- <tr><td>1<td>2<td>3<td>4<td>5<td>6<td>7<td>8<td>9<td>10<td>11<td>12<td>13<td>14<td>15<td>16 -->
+    <tr><td colspan=6 class="td5"><h1>Historical Storage</h1><td colspan=3>
+         <td colspan=2 class="tdc"><h2>Storage Operation</h2><td class="tdc"><h3>Archive Status</h3><td colspan=3 class="tdc">All configured devices accessible
+    <tr><td><br>
+
+    <tr><td colspan=6  class="td3"><h3>MAIN STORAGE Est.</h3><td colspan=3><td colspan=6 class="td4"><h3>ARCHIVE STORAGE Est.</h3>
+    <tr><td colspan=2><td colspan=4  class="td3">Remaining Time: 3 years, 281 days</h3><td colspan=5><td colspan=4 class="td4">Remaining Time: 7 years, 68 days
+    <tr><td><br>
+
+    <tr><th><th class="td1">Disk Allocated<th class="td1">Free Space %<th class="td1">Free<th class="td1">Start Date<th class="td1">End Date<td><th><th><th class="td2">Disk Allocated<th class="td2">Free Space %<th class="td2">Free<th class="td2">Start Date<th class="td2">End Date
+    <tr><td class="td1">D:<td class="td1">380 GB<td class="td1">38 GB<td class="td1">10 %<td class="td1">06/17/2015<td class="td1">09/22/2021<td><th><td class="td2">NAS:<td class="td2">2515 GB<td class="td2">1613 GB<td class="td2">64 %<td class="td2">10/17/2009<td class="td2">09/21/2021
+
+    <tr><td class="td1">K:<td class="td1">1190 GB        <td class="td1">630 GB       <td class="td1">53 % <td colspan=2  class="td11">6 years, 3 months, 5 days <td><td><td><td>            <td colspan=2>                 <td colspan=3 class="td21"> 11 years, 11 months, 4 days
+    <tr><td><br>
+
+    <tr><td colspan=15 class="td7 center"><h3>DISK SPACE CONSUMPTION</h3>
+
+    <tr><td colspan=9><td colspan=4 class="td8"><h4>Average Daily Disk Consumption (past 14 days): <td colspan=2 class="td8"><b>543</b> MB/Day </h4>
+    <tr><td colspan=4 class="td9"><h3>Monthly Consumption</h3><td colspan=5 class="tda center"> <h4>Disk Space Storage Usage</h4><td colspan=4 class="tdb">Average Monthly Usage:<td colspan=4 class="tdb"> <b>540</b> gigabyte
+    <tr><td colspan=15><canvas id="horizontalChartCanvas"></canvas>
+<script>
+  new Chart(
+    document.getElementById('horizontalChartCanvas'),
+     {type: 'bar',
+      data: chart,
+      options: {responsive : true}
+     }
+  );
+</script>
+  </table>
+</div>
+
+<!-- Narrow format for portrait screens -->
+
+<div id=narrowTable>
+  <table border=0>
+    <!-- <tr><td>1<td>2<td>3<td>4<td>5<td>6<td>7<td>8<td>9<td>10<td>11<td>12<td>13<td>14<td>15<td>16 -->
+    <tr><td colspan=6 class="td5"><h1>Historical Storage</h1>
+    <tr><td><br>
+
+    <tr><td colspan=6  class="td3"><h3>MAIN STORAGE Est.</h3>
+    <tr><td colspan=2><td colspan=4  class="td3">Remaining Time: 3 years, 281 days</h3>
+    <tr><td><br>
+
+    <tr><th>              <th class="td1">Disk Allocated <th class="td1">Free Space % <th class="td1">Free <th class="td1">Start Date <th class="td1">End Date
+    <tr><td class="td1">D:<td class="td1">380 GB         <td class="td1">38 GB        <td class="td1">10 % <td class="td1">06/17/2015 <td class="td1">09/22/2021
+    <tr><td class="td1">K:<td class="td1">1190 GB        <td class="td1">630 GB       <td class="td1">53 % <td colspan=2  class="td11">6 years, 3 months, 5 days
+    <tr><td><br>
+    <tr><td colspan=6 class="td4"><h3>ARCHIVE STORAGE Est.</h3>
+    <tr><td colspan=6 class="td4">Remaining Time: 7 years, 68 days
+
+    <tr><td><br>
+    <tr><td colspan=6 class="td7"><h3>DISK SPACE CONSUMPTION</h3>
+
+    <tr><td colspan=4 class="td8"><h4>Average Daily Disk Consumption (past 14 days): <td colspan=2 class="td8"><b>543</b> MB/Day </h4>
+    <tr><td colspan=4 class="tdb">Average Monthly Usage:<td colspan=2 class="tdb"> <b>540</b> gigabyte
+
+    <!-- <tr><td>1<td>2<td>3<td>4<td>5<td>6<td>7<td>8<td>9<td>10<td>11<td>12<td>13<td>14<td>15<td>16 -->
+    <tr><td><br>
+    <tr><td colspan=2 class="tdc"><h2>Storage Operation</h2><td class="tdc"><h3>Archive Status</h3><td colspan=3 class="tdc">All configured devices accessible
+    <tr><td colspan=2><td colspan=4  class="td3">Remaining Time: 3 years, 281 days</h3>
+    <tr><td><br>
+
+   <tr><th>                <th class="td2">Disk Allocated <th class="td2">Free Space % <th class="td2">Free <th class="td2">Start Date <th class="td2">End Date
+    <tr><td class="td2">NAS:<td class="td2">2515 GB        <td class="td2">1613 GB      <td class="td2">64 % <td class="td2">10/17/2009 <td class="td2">09/21/2021
+    <tr><td><td>            <td colspan=2>                 <td colspan=2 class="td21"> 11 years, 11 months, 4 days
+    <tr><td><br>
+
+    <tr><td colspan=6 class="td7"><h3>DISK SPACE CONSUMPTION</h3>
+
+    <tr><td><br>
+    <tr><td colspan=3 class="td8"><h4>Average Daily Disk Consumption (past 14 days): <td colspan=2 class="td8"><b>543</b> MB/Day </h4>
+    <tr><td colspan=3 class="tdb">Average Monthly Usage:<td colspan=3 class="tdb"> <b>540</b> gigabyte
+    <tr><td colspan=6>
+    <div style="position: relative; height:40vh; width:80vw">
+       <canvas id="verticalChartCanvas"></canvas>
+    </div>
+<script>
+  new Chart(
+    document.getElementById('verticalChartCanvas'),
+     {type: 'bar',
+      data: chart,
+      options: {responsive : true, indexAxis : 'y'}
+     },
+  );
+</script>
+  </table>
+</div>
+<script>
+
+<!-- Respond to window size changes -->
+
+function resize()
+ {//console.log("Width: ", window.innerWidth, " Height: ", window.innerHeight);
+
+  const landscape = window.innerWidth > window.innerHeight
+  if (landscape)
+   {wideTable.hidden = false;
+    narrowTable.hidden = true;
+   }
+  else
+   {wideTable.hidden = true;
+    narrowTable.hidden = false;
+   }
+  for (const t of document.querySelectorAll('td'))  // Wider screens make the font too big!
+   {t.style['font-size'] = landscape ? '1vw' : '2vw';
+   }
+
+ }
+
+window.addEventListener('resize', resize);
+resize();
+</script>
+</body>
+</html>
